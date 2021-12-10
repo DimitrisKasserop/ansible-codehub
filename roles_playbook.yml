@@ -1,0 +1,9 @@
+---
+
+- name: Dynamic-OS
+  hosts: ubuntu_nodes
+  become: true
+
+  roles:
+  - loops_conditionals_handlers
+  

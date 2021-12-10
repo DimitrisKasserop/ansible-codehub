@@ -1,2 +1,4 @@
 ---
 # tasks file for /etc/ansible/roles/loops_conditionals_handlers
+- import_tasks: copy_redhat_files.yml
+- import_tasks: copy_debian_files.yml

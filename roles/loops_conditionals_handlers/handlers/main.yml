@@ -1,2 +1,17 @@
 ---
 # handlers file for /etc/ansible/roles/loops_conditionals_handlers
+    - name: RedHat files copied
+      blockinfile: 
+        path: /etc/ansible/redhat_logs.txt
+        marker: ""
+        insertafter: EOF
+        block: |
+          Files were copied last time at {{ ansible_date_time.iso8610 }} from user {{ user }}
+
+    - name: Debian files copied
+      blockinfile: 
+        path: /etc/ansible/debian_logs.txt
+        marker: ""
+        insertafter: EOF
+        block: |
+          Files were copied last time at {{ ansible_date_time.iso8610 }} from user {{ user }}  
