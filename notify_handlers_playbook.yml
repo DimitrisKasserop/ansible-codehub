@@ -1,0 +1,49 @@
+---
+
+  - name: Copy-files
+    hosts: linux_nodes
+    become: true
+
+
+  vars:
+    user: "Linus Torvalds"
+
+
+    tasks:
+      - name: Copy RedHat files
+        copy: 
+          src: "{{ item.src }}"
+          dest: "{{ item.src }}"
+        loop:
+          - { src: 'redhat-files/rfile1.txt', dest: '/etc/myfolder/'} 
+          - { src: 'redhat-files/rfile2.txt', dest: '/etc/myfolder/'} 
+        notify: 
+          - RedHat files copied
+        when: ansible_os_family == 'RedHat'
+
+      - name: Copy Debian files
+        copy: 
+          src: "{{ item.src }}"
+          dest: "{{ item.src }}"
+        loop:
+          - { src: 'debian-files/dfile1.txt', dest: '/etc/myfolder/'} 
+          - { src: 'debian-files/dfile2.txt', dest: '/etc/myfolder/'} 
+        when: ansible_os_family == 'Debian'
+        notify: 
+          - Debian files copied
+  handlers: 
+    - name: RedHat files copied
+      blockinfile: 
+        path: redhat_logs.txt
+        marker: ""
+        insertafter: EOF
+        block: 
+          Files were copied last time at {{ ansible_date_time.iso8610 }} from user {{ user }}
+
+    - name: Debian files copied
+      blockinfile: 
+        path: debian_logs.txt
+        marker: ""
+        insertafter: EOF
+        block: 
+          Files were copied last time at {{ ansible_date_time.iso8610 }} from user {{ user }}          
