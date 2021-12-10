@@ -22,4 +22,5 @@
           - { src: 'debian-files/dfile1.txt', dest: '/etc/myfolder/'} 
           - { src: 'debian-files/dfile2.txt', dest: '/etc/myfolder/'} 
         when: ansible_os_family == 'Debian'
+
           
