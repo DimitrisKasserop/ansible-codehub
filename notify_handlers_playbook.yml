@@ -13,7 +13,7 @@
       - name: Copy RedHat files
         copy: 
           src: "{{ item.src }}"
-          dest: "{{ item.src }}"
+          dest: "{{ item.dest }}"
         loop:
           - { src: 'redhat-files/rfile1.txt', dest: '/etc/myfolder/'} 
           - { src: 'redhat-files/rfile2.txt', dest: '/etc/myfolder/'} 
@@ -24,7 +24,7 @@
       - name: Copy Debian files
         copy: 
           src: "{{ item.src }}"
-          dest: "{{ item.src }}"
+          dest: "{{ item.dest }}"
         loop:
           - { src: 'debian-files/dfile1.txt', dest: '/etc/myfolder/'} 
           - { src: 'debian-files/dfile2.txt', dest: '/etc/myfolder/'} 
@@ -34,16 +34,16 @@
   handlers: 
     - name: RedHat files copied
       blockinfile: 
-        path: redhat_logs.txt
+        path: /etc/ansible/redhat_logs.txt
         marker: ""
         insertafter: EOF
-        block: 
+        block: |
           Files were copied last time at {{ ansible_date_time.iso8610 }} from user {{ user }}
 
     - name: Debian files copied
       blockinfile: 
-        path: debian_logs.txt
+        path: /etc/ansible/debian_logs.txt
         marker: ""
         insertafter: EOF
-        block: 
+        block: |
           Files were copied last time at {{ ansible_date_time.iso8610 }} from user {{ user }}          
