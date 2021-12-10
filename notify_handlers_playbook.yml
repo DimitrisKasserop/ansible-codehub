@@ -1,8 +1,8 @@
 ---
 
 - name: Copy-files
-    hosts: linux_nodes
-    become: true
+  hosts: linux_nodes
+  become: true
 
   vars:
     user: "Linus Torvalds"
