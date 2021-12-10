@@ -4,10 +4,8 @@
     hosts: linux_nodes
     become: true
 
-
   vars:
     user: "Linus Torvalds"
-
 
     tasks:
       - name: Copy RedHat files
