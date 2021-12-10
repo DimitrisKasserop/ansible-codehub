@@ -4,7 +4,7 @@
     hosts: linux_nodes
     become: true
  
-   tasks:
+    tasks:
       - name: Copy RedHat files
         copy: 
           src: "{{ item.src }}"
