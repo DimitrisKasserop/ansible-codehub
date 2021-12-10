@@ -7,7 +7,7 @@
   vars:
     user: "Linus Torvalds"
 
-    tasks:
+  tasks:
       - name: Copy RedHat files
         copy: 
           src: "{{ item.src }}"
