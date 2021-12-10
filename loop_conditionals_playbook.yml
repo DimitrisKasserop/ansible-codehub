@@ -8,7 +8,7 @@
       - name: Copy RedHat files
         copy: 
           src: "{{ item.src }}"
-          dest: "{{ item.src }}"
+          dest: "{{ item.dest }}"
         loop:
           - { src: 'redhat-files/rfile1.txt', dest: '/etc/myfolder/'} 
           - { src: 'redhat-files/rfile2.txt', dest: '/etc/myfolder/'} 
@@ -17,7 +17,7 @@
       - name: Copy Debian files
         copy: 
           src: "{{ item.src }}"
-          dest: "{{ item.src }}"
+          dest: "{{ item.dest }}"
         loop:
           - { src: 'debian-files/dfile1.txt', dest: '/etc/myfolder/'} 
           - { src: 'debian-files/dfile2.txt', dest: '/etc/myfolder/'} 
