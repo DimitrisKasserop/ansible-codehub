@@ -1,0 +1,24 @@
+---
+
+- name: Dynamic-OS
+  hosts: ubuntu_nodes
+  become: true 
+
+  pre_tasks: 
+    - name: Load variable files
+    include_vars: "{{ item }}"
+    with_first_found:
+        - "vars/apache_{{ ansible_os_family }}.yml"
+        - "vars/apache_default.yml"
+      
+
+  tasks:
+    - name: Install apache
+      package: 
+      name: "{{ package name }}"
+      state: latest
+    
+    - name: Start service
+      service: 
+      name: "{{ service_name }}"
+      state: started 
