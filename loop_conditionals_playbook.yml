@@ -3,8 +3,8 @@
   - name: Copy-files
     hosts: linux_nodes
     become: true
-
-    tasks:
+ 
+   tasks:
       - name: Copy RedHat files
         copy: 
           src: "{{ item.src }}"
@@ -23,4 +23,3 @@
           - { src: 'debian-files/dfile2.txt', dest: '/etc/myfolder/'} 
         when: ansible_os_family == 'Debian'
 
-          
